@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #08053e;
+  --gold: #c8a961;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: rgba(200, 169, 97, 0.35);
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .container-cpi {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .kicker {
+    @apply inline-flex items-center gap-2.5 text-[0.72rem] font-medium uppercase tracking-[0.28em] text-gold-deep;
+  }
+  .kicker::before {
+    content: "";
+    @apply h-px w-8 bg-gold;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-navy text-white hover:-translate-y-0.5 hover:shadow-float;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-navy hover:-translate-y-0.5 hover:shadow-float;
+  }
+  .btn-ghost {
+    @apply btn bg-white/60 text-navy hover:bg-white;
+    border: 1px solid rgba(8, 5, 62, 0.15);
+  }
+  .btn-ghost:hover {
+    border-color: rgba(8, 5, 62, 0.4);
+  }
+  .btn-whatsapp {
+    @apply btn bg-[#25D366] text-white hover:-translate-y-0.5 hover:shadow-float;
+  }
+  .card {
+    @apply rounded-xl2 bg-white shadow-card;
+    border: 1px solid rgba(8, 5, 62, 0.08);
+  }
+  /* Skeleton de carga */
+  .skeleton {
+    @apply relative overflow-hidden;
+    background: rgba(8, 5, 62, 0.08);
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .skeleton::after {
+    animation: none;
+  }
+}
+
+/* Leaflet: contenedor y estética premium */
+.leaflet-container {
+  background: #eae7df;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(8, 5, 62, 0.22);
+}
+.leaflet-popup-content {
+  margin: 0;
+  width: 260px !important;
+}
+.leaflet-popup-tip {
+  box-shadow: 0 12px 40px rgba(8, 5, 62, 0.22);
+}
+.leaflet-bar a,
+.leaflet-touch .leaflet-bar a {
+  color: var(--navy);
+}
+.cpi-marker-cluster {
+  background: rgba(8, 5, 62, 0.92);
+  color: #fff;
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-family: var(--font-sans), sans-serif;
+  box-shadow: 0 6px 18px rgba(8, 5, 62, 0.35);
+}
