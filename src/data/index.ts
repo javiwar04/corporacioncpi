@@ -73,6 +73,24 @@ export function projectsForMap(): Project[] {
   return projects.filter((p) => p.coordinates);
 }
 
+/**
+ * Propiedades destacadas para la home: viviendas/bodegas individuales que enlazan
+ * directo a su ficha (1 clic). Residencial disponible primero, luego bodegas IMANA
+ * disponibles y destacadas.
+ */
+export function featuredProperties(limit = 6): { project: Project; unit: PropertyUnit }[] {
+  const out: { project: Project; unit: PropertyUnit }[] = [];
+  for (const p of projects) {
+    if (p.category !== "residencial") continue;
+    for (const u of p.units) if (u.status === "available") out.push({ project: p, unit: u });
+  }
+  for (const p of projects) {
+    if (p.category !== "industrial") continue;
+    for (const u of p.units) if (u.status === "available" && u.featured) out.push({ project: p, unit: u });
+  }
+  return out.slice(0, limit);
+}
+
 export const categoryLabels: Record<Project["category"], string> = {
   residencial: "Residencial",
   comercial: "Comercial",

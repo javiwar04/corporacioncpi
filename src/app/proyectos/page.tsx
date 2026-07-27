@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { projects } from "@/data";
 import { executedProjects, proximosProjects } from "@/data/executed";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
@@ -24,7 +25,15 @@ export default function ProyectosPage() {
       </section>
 
       <section className="container-cpi py-10">
-        <ProjectsExplorer projects={projects} executed={executedProjects} proximos={proximosProjects} />
+        <Suspense
+          fallback={
+            <div className="skeleton grid h-[420px] w-full place-items-center rounded-xl2">
+              <span className="text-sm font-medium text-navy/40">Cargando proyectos…</span>
+            </div>
+          }
+        >
+          <ProjectsExplorer projects={projects} executed={executedProjects} proximos={proximosProjects} />
+        </Suspense>
       </section>
     </div>
   );

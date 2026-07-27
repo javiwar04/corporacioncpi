@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
@@ -23,16 +24,32 @@ export function ProjectsExplorer({
   executed: ExecutedProject[];
   proximos?: ProximoProject[];
 }) {
+  // Permite llegar prefiltrado desde la home: /proyectos?tipo=residencial|industrial
+  const searchParams = useSearchParams();
+  const tipoParam = searchParams.get("tipo");
+  const initialCat: ProjectCategory | "all" =
+    tipoParam === "residencial" || tipoParam === "industrial" || tipoParam === "comercial"
+      ? (tipoParam as ProjectCategory)
+      : "all";
+
   const [estado, setEstado] = useState<Estado>("disponibles");
   const [view, setView] = useState<"map" | "grid">("map");
-  const [cat, setCat] = useState<ProjectCategory | "all">("all");
+  const [cat, setCat] = useState<ProjectCategory | "all">(initialCat);
   const [activeSlug, setActiveSlug] = useState<string | undefined>();
   const listRef = useRef<HTMLDivElement>(null);
 
-  const filtered = useMemo(
-    () => (cat === "all" ? projects : projects.filter((p) => p.category === cat)),
-    [projects, cat]
-  );
+  // Texto de búsqueda opcional que llega desde el buscador del hero (?q=)
+  const qParam = (searchParams.get("q") ?? "").trim().toLowerCase();
+
+  const filtered = useMemo(() => {
+    let list = cat === "all" ? projects : projects.filter((p) => p.category === cat);
+    if (qParam) {
+      list = list.filter((p) =>
+        `${p.name} ${p.location} ${p.city ?? ""} ${p.shortDescription}`.toLowerCase().includes(qParam)
+      );
+    }
+    return list;
+  }, [projects, cat, qParam]);
 
   const selectFromMap = (slug: string) => {
     setActiveSlug(slug);

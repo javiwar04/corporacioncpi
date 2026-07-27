@@ -1,15 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/data/site";
-import { projects } from "@/data";
+import { projects, featuredProperties } from "@/data";
 import { executedProjects, executedCount } from "@/data/executed";
 import { hotels, hotelsCount } from "@/data/hotels";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { PropertyCard } from "@/components/projects/PropertyCard";
+import { QuickSearch } from "@/components/projects/QuickSearch";
 import { MasterMap } from "@/components/map/MasterMap";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 export default function HomePage() {
   const featured = projects;
+  const properties = featuredProperties(6);
 
   return (
     <>
@@ -38,11 +41,16 @@ export default function HomePage() {
             década construyendo con conciencia y calidad en Antigua Guatemala y el
             interior del país.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3 animate-slide-up">
-            <Link href="/proyectos" className="btn-gold">
-              Explorar proyectos <Icon name="arrow-right" size={18} />
-            </Link>
-            <Link href="/contacto" className="btn-ghost border-white/25 bg-white/10 text-white hover:bg-white/20">
+          {/* Acceso directo a propiedades (buscador rápido) */}
+          <div className="mt-8 animate-slide-up">
+            <QuickSearch />
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-3 animate-slide-up">
+            <a href="#propiedades" className="btn-gold">
+              Ver propiedades disponibles <Icon name="arrow-right" size={18} />
+            </a>
+            <Link href="/contacto#contacto" className="btn-ghost border-white/25 bg-white/10 text-white hover:bg-white/20">
               Contáctanos
             </Link>
           </div>
@@ -63,33 +71,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── LÍNEAS DE NEGOCIO ──────────────────────────────── */}
-      <section className="container-cpi py-20">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <span className="kicker">Qué hacemos</span>
-            <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">Nuestras líneas de negocio</h2>
-          </div>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {(
-            [
-              { icon: "building", title: "Vivienda", desc: "Casas y condominios de estilo antigüeño con acabados premium.", href: "/proyectos" },
-              { icon: "grid", title: "Comercios e industria", desc: "Bodegas y espacios comerciales listos para operar.", href: "/proyectos" },
-              { icon: "star", title: "Hotelería", desc: "Hoteles de Petén: 11 hoteles y alojamientos en Isla de Flores.", href: "/hoteleria" },
-            ] as { icon: IconName; title: string; desc: string; href: string }[]
-          ).map((c) => (
-            <Link key={c.title} href={c.href} className="card group p-7 transition-all hover:-translate-y-1 hover:shadow-float">
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy text-gold">
-                <Icon name={c.icon} size={24} />
-              </span>
-              <h3 className="mt-5 text-xl font-medium text-navy">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-navy/65">{c.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold-deep">
-                Ver más <Icon name="arrow-right" size={16} className="transition-transform group-hover:translate-x-1" />
-              </span>
+      {/* ── PROPIEDADES DISPONIBLES (1 clic a la ficha) ─────── */}
+      <section id="propiedades" className="scroll-mt-20 bg-cream py-20">
+        <div className="container-cpi">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="kicker">Disponibles ahora</span>
+              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+                Propiedades <span className="italic text-gold-deep">disponibles</span>
+              </h2>
+              <p className="mt-2 max-w-xl text-navy/60">
+                Viviendas y bodegas listas para consultar. Entra directo a la ficha de cada una.
+              </p>
+            </div>
+            <Link href="/proyectos" className="btn-ghost">
+              Ver todas <Icon name="arrow-right" size={16} />
             </Link>
-          ))}
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {properties.map(({ project, unit }, i) => (
+              <PropertyCard key={unit.id} project={project} unit={unit} priority={i < 3} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -221,6 +224,36 @@ export default function HomePage() {
               <Image src={h.image} alt={h.name} fill sizes="(max-width:768px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
               <span className="absolute inset-x-0 bottom-0 p-3 text-sm font-medium text-white">{h.name}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── LÍNEAS DE NEGOCIO ──────────────────────────────── */}
+      <section className="container-cpi py-20">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <span className="kicker">Qué hacemos</span>
+            <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">Nuestras líneas de negocio</h2>
+          </div>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {(
+            [
+              { icon: "building", title: "Vivienda", desc: "Casas y condominios de estilo antigüeño con acabados premium.", href: "/proyectos?tipo=residencial" },
+              { icon: "grid", title: "Comercios e industria", desc: "Bodegas y espacios comerciales listos para operar.", href: "/proyectos?tipo=industrial" },
+              { icon: "star", title: "Hotelería", desc: `Hoteles de Petén: ${hotelsCount} hoteles y alojamientos en Isla de Flores.`, href: "/hoteleria" },
+            ] as { icon: IconName; title: string; desc: string; href: string }[]
+          ).map((c) => (
+            <Link key={c.title} href={c.href} className="card group p-7 transition-all hover:-translate-y-1 hover:shadow-float">
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy text-gold">
+                <Icon name={c.icon} size={24} />
+              </span>
+              <h3 className="mt-5 text-xl font-medium text-navy">{c.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-navy/65">{c.desc}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold-deep">
+                Ver más <Icon name="arrow-right" size={16} className="transition-transform group-hover:translate-x-1" />
+              </span>
             </Link>
           ))}
         </div>
