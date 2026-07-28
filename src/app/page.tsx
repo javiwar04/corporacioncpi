@@ -29,24 +29,24 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/85 to-navy/55" />
         </div>
 
-        <div className="container-cpi relative z-10 flex min-h-[86vh] flex-col justify-center py-24">
+        <div className="container-cpi relative z-10 flex min-h-[78vh] flex-col justify-center py-24">
           <span className="kicker text-gold-soft animate-fade-in">Desarrollo inmobiliario · Guatemala</span>
           <h1 className="mt-6 max-w-4xl font-serif text-4xl font-normal leading-[1.05] tracking-tight animate-slide-up sm:text-6xl lg:text-7xl">
             Diseñamos el futuro,
             <br />
             <span className="italic text-gold">lo construimos contigo.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 animate-slide-up">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 animate-slide-up">
             Viviendas de autor, espacios comerciales e industriales con más de una
             década construyendo con conciencia y calidad en Antigua Guatemala y el
             interior del país.
           </p>
           {/* Acceso directo a propiedades (buscador rápido) */}
-          <div className="mt-8 animate-slide-up">
+          <div className="mt-8 flex justify-center animate-slide-up">
             <QuickSearch />
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-3 animate-slide-up">
+          <div className="mt-4 flex flex-wrap justify-center gap-3 animate-slide-up">
             <a href="#propiedades" className="btn-gold">
               Ver propiedades disponibles <Icon name="arrow-right" size={18} />
             </a>
@@ -55,7 +55,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <dl className="mt-16 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/12 bg-white/10 backdrop-blur sm:grid-cols-4">
+          <dl className="mt-16 grid max-w-3xl mx-auto grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/12 bg-white/10 backdrop-blur sm:grid-cols-4">
             {[
               { n: site.stats.years, l: "Años de experiencia" },
               { n: `${executedCount}+`, l: "Proyectos ejecutados" },
