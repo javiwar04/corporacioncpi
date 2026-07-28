@@ -42,7 +42,7 @@ export default function HomePage() {
             interior del país.
           </p>
           {/* Acceso directo a propiedades (buscador rápido) */}
-          <div className="mt-8 flex justify-center animate-slide-up">
+          <div className="relative z-20 mt-8 flex justify-center animate-slide-up">
             <QuickSearch />
           </div>
 
