@@ -11,7 +11,8 @@
 | # | Archivo | Tipo | Contenido útil |
 |---|---------|------|----------------|
 | 1 | `antigua gardens - cpi 2026.pdf` | Brochure comercial (1 vivienda) | Precio, áreas, distribución, ubicación, amenidades del condominio, texto corporativo |
-| 2 | `Portal de Antigua CPI 2025.pdf` | Brochure comercial (1 vivienda) | Precio, áreas, distribución por nivel, especificaciones de acabados, planos (Planta 1 y 2), ubicación, amenidades |
+| 2 | `Portal de Antigua CPI 2025.pdf` | Brochure comercial (1 vivienda) — **VENDIDA, histórico** | Precio, áreas, distribución por nivel, especificaciones de acabados, planos (Planta 1 y 2), ubicación, amenidades |
+| 2b | `casa portal de antigua - presentacion CPI - Julio - Agosto 26.pdf` | Presentación comercial (1 vivienda) — **vigente** | Áreas, distribución por nivel, planos (1er nivel, 2do nivel, techo), fotos de todos los ambientes, ubicación, amenidades del condominio. **Sin precio.** |
 | 3 | `Casa Refugio de la Condesa - CPI - Presentacion Julio - Agosto 2026.pdf` | Brochure comercial (1 vivienda) | Precio con vigencia, áreas, distribución, especificaciones, amenidades, ubicación |
 | 4 | `Imana1.jpeg` … `Imana11.jpeg` | Fotografías de obra | 11 fotos del complejo industrial IMANA (naves metálicas azul/blanco en construcción, explanada, estructura) |
 | 5 | `Portales.jpeg`, `Portales2.jpeg`, `Portales3.jpeg` | Captura de listado interno | Lista numerada de ~33 unidades/lotes del inventario (solo nombres/códigos, sin ficha) |
@@ -51,14 +52,25 @@
 - ⚠️ El PDF se refiere a la «casa Antigua Gardens 2»; el listado interno incluye «AG 1 Antigua Gardens» y «Antigua Gardens 2» → el proyecto tiene **varias unidades**; solo hay ficha de un modelo. Ver CONTENT_TODO.
 
 ### 3.2 Portal de Antigua (residencial — 1 modelo documentado)
-- **Estado:** en venta. **Precio:** `$500,000.00`.
-- **Ubicación:** Antigua Guatemala; muy cerca del parque central (11 min en vehículo); a 600 mts de la plaza El Parador de Santa Clara; ingreso por calle Chipilapa; zona residencial rodeada de condominios.
-- **Distribución:** 4 habitaciones · 5 baños · 250 m² de construcción · 2 niveles · terreno 8×20 m² (≈160 m²).
-  - **Nivel 1:** garaje 1 carro, sala-comedor, cocina equipada, patio con búcaro, área de lavandería, dormitorio máster con walk-in closet + baño privado + patio.
-  - **Nivel 2:** 3 dormitorios con baño privado y closet.
-- **Acabados (detallados):** porcelanato beige mate rectificado 60×60, puertas de madera nogal oscuro, cielos a dos aguas en madera de ciprés (sala), cuarzo Calacatta, cocina con línea blanca (cooktop, campana, torre de hornos, refrigerador), portón de cedro, balcones coloniales de hierro forjado.
-- **Amenidades:** calles amplias, piscina, garita de seguridad, casa club para eventos.
-- **Planos disponibles:** «Planta Uno» y «Planta Dos» (imágenes dentro del PDF).
+
+> ⚠️ **Cambio de unidad (julio 2026).** La casa del brochure 2025 (4 hab · 5 baños · 250 m² · $500,000)
+> **se vendió**. La ficha del sitio publica ahora la **casa remodelada** de la presentación
+> Julio–Agosto 2026, y la casa vendida se movió al portafolio de **obra ejecutada**
+> (`/proyectos-ejecutados/casa-portal-de-antigua`, con galería de 9 imágenes incluidos sus planos).
+
+**Unidad vigente — `casa portal de antigua - presentacion CPI - Julio - Agosto 26.pdf`**
+- **Estado:** en venta. **Precio:** no viene en la presentación → «Precio bajo consulta» (ver CONTENT_TODO).
+- **Ubicación:** Antigua Guatemala; ingreso desde la ciudad por calle Chipilapa; 11 min en vehículo al parque central (pág. 2) / ≈5 min del casco (pág. 4); a 600 mts de la plaza El Parador de Santa Clara.
+- **Distribución:** 4 dormitorios · 3.5 baños (3 completos + 1 de visitas) · ≈220 m² de construcción · 2 niveles.
+  - **Nivel 1:** sala, comedor, cocina remodelada, patio central con fuente, 3 dormitorios (dos comparten baño), dormitorio de servicio, lavandería y garaje.
+  - **Nivel 2:** suite principal con walk-in closet y baño privado, sala familiar/estudio, terraza y pérgola de madera con vista a volcanes.
+- **Acabados destacados:** cocina en tonos Privilege Green con detalles dorados, cielos de madera con viga vista, piso de barro, patio colonial antigüeño reinterpretado.
+- **Amenidades del condominio:** calles amplias, piscina, garita de seguridad, casa club para eventos.
+- **Planos disponibles:** «Plano amueblado 1er nivel», «2do nivel» y «Plano de techo» (recortados del PDF).
+
+**Unidad vendida — `Portal de Antigua CPI 2025.pdf` (publicada en obra ejecutada)**
+- Precio `$500,000.00` · 4 habitaciones · 5 baños · 250 m² · terreno 8×20 m² (≈160 m²).
+- Acabados: porcelanato beige mate rectificado 60×60, puertas de madera nogal oscuro, cielos a dos aguas en madera de ciprés, cuarzo Calacatta, cocina con línea blanca, portón de cedro, balcones de hierro forjado.
 
 ### 3.3 Refugio de la Condesa (residencial — 1 modelo documentado)
 - **Estado:** en venta. **Precio:** `$575,000` con impuestos incluidos (**vigencia Julio/Agosto 2026**).
@@ -119,7 +131,7 @@ Lista numerada de ~33 unidades/lotes (solo nombre/código, **sin ficha comercial
 - **Residenciales:** los renders y planos viven **embebidos** en los PDFs; se rasterizan las páginas relevantes a WebP en `public/projects/<slug>/` (ver script en `MASTERPLAN_GUIDE.md`). Portada de cada residencial = render principal del PDF.
 
 ## 7. Planos disponibles
-- **Portal de Antigua:** «Planta Uno» y «Planta Dos» (dentro del PDF) → usados como `floorPlans` de la unidad.
+- **Portal de Antigua:** «Plano amueblado 1er nivel», «2do nivel» y «Plano de techo» (una sola lámina dentro del PDF Julio–Agosto 2026, recortada en tres) → `floorPlans` de la unidad; los dos niveles llevan además plano interactivo.
 - **Antigua Gardens:** «Planta baja» y «Planta alta» mencionadas (dentro del PDF).
 - **IMANA:** no hay plano de lotificación en imagen; el masterplan se reconstruye como **SVG** a partir de la distribución descrita (Norte 1–7 / Sur 8–12).
 - **Residenciales:** ninguno tiene un masterplan de lotificación con múltiples lotes → usan la **ficha premium** (fallback «Masterplan próximamente»), no un plano interactivo de lotes.

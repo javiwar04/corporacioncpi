@@ -40,7 +40,7 @@ export default function QuienesSomosPage() {
       {/* Hero */}
       <section className="relative bg-navy text-white">
         <div className="absolute inset-0">
-          <Image src="/projects/portal-de-antigua/obra-1.webp" alt="" fill className="object-cover opacity-30" />
+          <Image src="/projects/portal-de-antigua/patio-central.webp" alt="" fill className="object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/85 to-navy/60" />
         </div>
         <div className="container-cpi relative z-10 py-20">

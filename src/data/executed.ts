@@ -25,6 +25,24 @@ const SERENISIMA =
 
 export const executedProjects: ExecutedProject[] = [
   {
+    // Casa del brochure `Portal de Antigua CPI 2025.pdf`. Se vendió en 2026 y pasó
+    // de la ficha en venta (/proyectos/portal-de-antigua) al portafolio de ejecutados.
+    slug: "casa-portal-de-antigua",
+    name: "Casa en Portal de Antigua",
+    location: "Portal de Antigua · Antigua Guatemala, ingreso por calle Chipilapa",
+    description:
+      "Residencia colonial con acabados premium en el condominio Portal de Antigua: porcelanato beige rectificado 60×60, puertas de madera nogal, cuarzo Calacatta, cielos a dos aguas en madera de ciprés, portón de cedro y balcones de hierro forjado. A 11 minutos del parque central de Antigua Guatemala.",
+    details: [
+      "4 habitaciones · 5 baños · 2 niveles",
+      "250 m² de construcción · terreno de 8×20 m",
+      "Dormitorio máster con walk-in closet, baño privado y patio",
+      "Cocina equipada con línea blanca (cooktop, campana, torre de hornos, refrigerador)",
+      "Nivel 2: 3 dormitorios con baño privado y closet",
+    ],
+    image: "/ejecutados/casa-portal-de-antigua.webp",
+    galleryCount: 9,
+  },
+  {
     slug: "casa-1-antigua-gardens",
     name: "Casa No. 1 en Antigua Gardens",
     location: "Antigua Gardens · a 15 min de Antigua Guatemala",

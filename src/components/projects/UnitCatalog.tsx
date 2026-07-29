@@ -23,22 +23,24 @@ export function UnitCatalog({ project }: { project: Project }) {
           const price = displayPrice(u);
           return (
             <article key={u.id} className="card overflow-hidden">
-              <button
-                onClick={() => setSelected(u)}
-                className="group relative block aspect-[16/10] w-full overflow-hidden bg-navy/5 text-left"
-                aria-label={`Ver ficha de ${u.model ?? u.code}`}
-              >
+              {/* Contenedor, no <button>: los toggles son botones y no pueden anidarse. */}
+              <div className="group relative aspect-[16/10] w-full overflow-hidden bg-navy/5">
                 {u.coverImage && (
                   <Image src={u.coverImage} alt={u.model ?? u.code} fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 )}
-                <div className="absolute left-4 top-4">
+                <button
+                  onClick={() => setSelected(u)}
+                  className="absolute inset-0 z-10 h-full w-full"
+                  aria-label={`Ver ficha de ${u.model ?? u.code}`}
+                />
+                <div className="pointer-events-none absolute left-4 top-4 z-20">
                   <StatusBadge status={u.status} />
                 </div>
-                <div className="absolute right-3 top-3 flex gap-2">
+                <div className="absolute right-3 top-3 z-20 flex gap-2">
                   <FavoriteToggle projectSlug={project.slug} unitCode={u.code} />
                   <CompareToggle projectSlug={project.slug} unitCode={u.code} />
                 </div>
-              </button>
+              </div>
               <div className="p-5">
                 <div className="flex items-start justify-between gap-2">
                   <div>

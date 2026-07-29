@@ -20,11 +20,21 @@ Leyenda de severidad: 🔴 bloquea publicación fiable · 🟡 conviene aclarar 
 - 🟡 **Baños.** No se indica el número de baños del modelo. Campo dejado vacío.
 - 🟢 **Estacionamientos.** No se menciona explícitamente. Campo vacío.
 
-## Portal de Antigua  · fuente: `Portal de Antigua CPI 2025.pdf`
+## Portal de Antigua  · fuente: `casa portal de antigua - presentacion CPI - Julio - Agosto 26.pdf`
+> ⚠️ **La casa del brochure 2025 (`Portal de Antigua CPI 2025.pdf`, 4 hab / 5 baños / 250 m² / $500,000)
+> ya se vendió.** La ficha publica ahora la **casa remodelada** de la presentación Julio–Agosto 2026
+> (4 dormitorios / 3.5 baños / 220 m²). La casa vendida **no se eliminó**: pasó al portafolio de
+> obra ejecutada como `casa-portal-de-antigua` (`data/executed.ts`), con sus fotos y planos en
+> `public/ejecutados/casa-portal-de-antigua/`.
+
+- 🔴 **Precio.** La presentación Julio–Agosto 2026 **no incluye precio**. La ficha muestra «Precio bajo consulta». → Enviar precio (y si incluye impuestos / vigencia).
 - 🔴 **Coordenadas GPS.** No especificadas. Aproximada (Antigua Guatemala, acceso calle Chipilapa). → Confirmar.
-- 🟡 **Terreno en m².** Documentado como «8×20 m²» (≈160 m²). Se publica el literal «8×20 m» y se calcula 160 m² como referencia. → Confirmar área exacta de terreno.
+- 🟡 **Código de unidad.** La presentación no trae código. Se usó `PA-02` para distinguirla de la casa vendida (`PA-01`). → Confirmar nomenclatura oficial.
+- 🟡 **Área de terreno.** No se declara. El plano indica 7.50 m de frente; el fondo no se lee con certeza. Campo vacío. → Confirmar m² de terreno.
+- 🟡 **Estacionamientos.** El plano muestra garaje, sin número de plazas declarado. Campo vacío.
+- 🟡 **Distancia al casco.** La presentación dice «≈5 minutos del casco» (pág. 4) y «11 min en vehículo al parque central» (pág. 2). → Confirmar cuál usar.
 - 🟡 **Disponibilidad / n.º de unidades.** El inventario lista «Portal de antigua» y «Portal de Antigua 2». → Confirmar cuántas casas hay y el estado de cada una (disponible/reservada/vendida).
-- 🟢 **Vigencia del precio.** $500,000 sin fecha de vigencia declarada (brochure 2025). → Confirmar precio actual.
+- 🟡 **Foto exterior de la casa.** Las únicas tomas exteriores de la presentación son de la calle del condominio (747×520 px, baja resolución). → Enviar fotos de fachada de la casa en alta resolución.
 
 ## Refugio de la Condesa · fuente: `Casa Refugio de la Condesa ... 2026.pdf`
 - 🔴 **Coordenadas GPS.** No especificadas. Aproximada (Antigua Guatemala, ingreso calle Tetuán). → Confirmar.
@@ -63,7 +73,7 @@ Leyenda de severidad: 🔴 bloquea publicación fiable · 🟡 conviene aclarar 
 
 ## Planos interactivos (ambientes seleccionables)
 - 🟢 **Los tres residenciales ya tienen plano interactivo en ambos niveles:** Portal de Antigua
-  (Planta Uno/Dos), Refugio de la Condesa (Planta baja/alta) y Antigua Gardens (Planta baja/alta).
+  (Primer/Segundo nivel), Refugio de la Condesa (Planta baja/alta) y Antigua Gardens (Planta baja/alta).
   Cada ambiente (dormitorios, cocina, sala, comedor, baños, garaje, patio, pérgola…) se resalta al
   pasar el cursor y aparece en el listado lateral. Alineación verificada sobre cada plano.
 - 🟡 **Polígonos trazados a ojo.** Las zonas se ubicaron visualmente sobre el plano; pueden requerir
