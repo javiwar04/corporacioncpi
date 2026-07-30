@@ -8,8 +8,10 @@ export const site = {
     "Desarrollo inmobiliario premium en Guatemala. Viviendas, comercios y proyectos industriales con más de 10 años de experiencia y +30 proyectos ejecutados.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://corporacioncpi.com",
 
+  // Línea de oficina (se muestra como tel: en footer, contacto y fichas).
   phone: process.env.NEXT_PUBLIC_PHONE || "+502 2333 7054",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "50223337054",
+  // Número al que llegan TODOS los WhatsApp del sitio (botones de proyecto, unidad y formulario).
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "50231470464",
   // Correo PENDIENTE de confirmar — ver CONTENT_TODO.md
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
 

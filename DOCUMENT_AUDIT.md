@@ -31,7 +31,7 @@
   - Azul brillante **`#007BFF`** (acento interactivo)
   - Naranja **`#FFA500`** (acento secundario)
 - **Contacto:**
-  - Tel/WhatsApp: **+502 2333 7054** · `https://wa.me/50223337054`
+  - Tel oficina: **+502 2333 7054** · WhatsApp: **+502 3147 0464** · `https://wa.me/50231470464`
   - Dirección: 5ta avenida 15-45 zona 10, Edificio Centro Empresarial of. 105 Torre I, Guatemala
   - Facebook: `facebook.com/cpicorporacion` · Instagram: `instagram.com/cpicorporacion`
 - **Valores:** Coordinación–Eficiencia · Atención–Calidad · Honestidad–Transparencia
