@@ -114,6 +114,13 @@ export interface PropertyUnit {
 
   /** Datos preliminares (p. ej. IMANA proviene de un mockup, no de doc oficial). */
   preliminary?: boolean;
+
+  /**
+   * true = el plano oficial YA trae impresa la banda «VENDIDO» sobre esta unidad,
+   * así que el masterplan no la vuelve a dibujar. Cuando CPI entregue un plano
+   * actualizado con todas las bandas, basta con marcar las nuevas aquí.
+   */
+  printedSoldBand?: boolean;
 }
 
 export interface Project {

@@ -5,6 +5,20 @@ import type { Project, PropertyUnit } from "@/data/types";
 import { statusMeta } from "@/lib/status";
 import { formatArea } from "@/lib/format";
 
+// Naranja de las bandas «VENDIDO» impresas en el plano oficial de IMANA.
+// Las bandas que dibujamos aquí deben verse idénticas a esas.
+const SOLD_BAND = "#E9A05B";
+
+/** Caja envolvente de un polígono "x,y x,y ...". */
+function bbox(points: string) {
+  const nums = points.trim().split(/[\s,]+/).map(Number);
+  const xs = nums.filter((_, i) => i % 2 === 0);
+  const ys = nums.filter((_, i) => i % 2 === 1);
+  const x = Math.min(...xs);
+  const y = Math.min(...ys);
+  return { x, y, w: Math.max(...xs) - x, h: Math.max(...ys) - y };
+}
+
 interface Props {
   project: Project;
   selectedId?: string;
@@ -151,6 +165,29 @@ export function Masterplan({ project, selectedId, matchedIds, onSelect, onHover 
                   strokeWidth={isSelected ? 5 : 2}
                 />
               )}
+              {/* Banda «VENDIDO» para las unidades que el plano impreso todavía no marca
+                  (p. ej. bodegas vendidas después de la última versión del plano). */}
+              {bg && u.status === "sold" && !u.printedSoldBand && u.polygonPoints && (() => {
+                const b = bbox(u.polygonPoints);
+                const h = 26;
+                return (
+                  <g pointerEvents="none">
+                    <rect x={b.x + 1} y={b.y + 1} width={b.w - 2} height={h} fill={SOLD_BAND} />
+                    <text
+                      x={b.x + b.w / 2}
+                      y={b.y + 1 + h / 2 + 5}
+                      fontSize={14}
+                      fill="#FFFFFF"
+                      textAnchor="middle"
+                      fontWeight={700}
+                      letterSpacing="1.5"
+                    >
+                      VENDIDO
+                    </text>
+                  </g>
+                );
+              })()}
+
               {/* Código/área: solo en el esquema. Sobre el plano real, las etiquetas ya vienen impresas. */}
               {!bg && (
                 <>

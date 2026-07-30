@@ -397,9 +397,9 @@ export const projects: Project[] = [
       "/imana/render-3.webp",
       "/imana/render-4.webp",
       "/imana/side.webp",
-      // Avance real de obra — dron, julio 2026 (bodegas 1 y 2 entregadas y en operación).
-      "/imana/bodegas-1-2.webp",
-      "/imana/bodegas-aereo.webp",
+      // Avance real de obra — tomas de dron del complejo, julio 2026.
+      "/imana/avance-7.webp",
+      "/imana/avance-8.webp",
       "/imana/avance-1.webp",
       "/imana/avance-2.webp",
       "/imana/avance-3.webp",
