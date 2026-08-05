@@ -56,7 +56,9 @@ Leyenda de severidad: 🔴 bloquea publicación fiable · 🟡 conviene aclarar 
   → **Reemplazar por las medidas reales** de cada bodega cuando CPI las proporcione.
 - 🟡 **«57% vendido».** imana.gt indica 57% vendido (probablemente por m²); el plano marca 5/12
   bodegas vendidas. Se usó el plano como fuente de estado por unidad. → Confirmar el % vigente.
-- 🟡 **Precio por bodega / modalidad.** Se muestra «Desde $675/m²»; no hay precio cerrado por bodega
+- 🟡 **Precio por bodega / modalidad.** Desde julio 2026 se promociona por **renta a $5.50/m²**
+  (antes se mostraba «Desde $675/m²» de venta). Falta confirmar si el período es mensual y si
+  el precio de venta se sigue manejando bajo consulta. No hay precio cerrado por bodega
   ni si es venta/renta. Botón «Solicitar por WhatsApp». → Confirmar.
 - 🔴 **Coordenadas GPS.** «Santa Elena, Petén» sin coordenada exacta. Aproximada. → Confirmar.
 - 🟢 **Contacto IMANA.** Tel propio del proyecto: (+502) 4512-2900 (distinto del general de CPI).

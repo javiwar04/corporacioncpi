@@ -378,12 +378,12 @@ export const projects: Project[] = [
     status: "en-construccion",
     category: "industrial",
     shortDescription:
-      "Complejo de 12 bodegas industriales flexibles de 500 a 2,000 m², a 5 minutos del Aeropuerto Internacional Mundo Maya. Desde $675/m².",
+      "Complejo de 12 bodegas industriales flexibles de 500 a 2,000 m², a 5 minutos del Aeropuerto Internacional Mundo Maya. Renta desde $5.50/m².",
     description:
       "IMANA es la oportunidad de inversión industrial en Petén, el departamento con mayor potencial de crecimiento poblacional del país. Un complejo de bodegas flexibles de 500 a 2,000 m² con módulos que pueden unirse según las necesidades de cada empresa, ideal para centros de distribución de última milla. Ubicado en Santa Elena en una zona estratégica rodeada de industrias como Pepsi y Multiperfiles, a solo 5 minutos del Aeropuerto Internacional Mundo Maya y colindante con la Carretera CA-13, que conecta hacia el sur de México y Belice.",
     highlights: [
       "Bodegas flexibles de 500 a 2,000 m² (módulos combinables)",
-      "Desde $675 por m²",
+      "Renta desde $5.50 por m²",
       "A 5 minutos del Aeropuerto Internacional Mundo Maya",
       "Colinda con la Carretera CA-13 (conexión a México y Belice)",
       "Boulevard principal para transporte pesado de hasta 53 pies",
@@ -409,7 +409,7 @@ export const projects: Project[] = [
     ],
     aerialImage: "/imana/plano.webp",
     masterplanImage: "/imana/plano.webp",
-    priceNote: "Desde $675 / m²",
+    // IMANA se promociona por renta: en el hero va solo la caja de RENTA.
     rentNote: "$5.50 / m²",
     amenities: [
       { label: "Garita con control de acceso digital", icon: "shield" },
