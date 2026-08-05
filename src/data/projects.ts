@@ -410,6 +410,7 @@ export const projects: Project[] = [
     aerialImage: "/imana/plano.webp",
     masterplanImage: "/imana/plano.webp",
     priceNote: "Desde $675 / m²",
+    rentNote: "$5.50 / m²",
     amenities: [
       { label: "Garita con control de acceso digital", icon: "shield" },
       { label: "Boulevard para transporte de 53 pies", icon: "truck" },

@@ -94,6 +94,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 <p className="font-serif text-2xl font-semibold text-gold">{project.priceNote}</p>
               </div>
             ) : null}
+            {project.rentNote && (
+              <div className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 backdrop-blur">
+                <span className="text-xs uppercase tracking-wide text-white/55">Renta</span>
+                <p className="font-serif text-2xl font-semibold text-gold">{project.rentNote}</p>
+              </div>
+            )}
             <a href={projectWhatsappLink(project)} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
               <Icon name="whatsapp" size={18} /> Consultar por WhatsApp
             </a>

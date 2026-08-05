@@ -161,6 +161,8 @@ export interface Project {
   currency?: string;
   /** Nota de precio a mostrar cuando el precio no es por unidad (p. ej. "Desde $675 / m²"). */
   priceNote?: string;
+  /** Nota de renta, cuando el proyecto también se alquila (p. ej. "$5.50 / m²"). */
+  rentNote?: string;
   /** Ficha técnica (bullets de especificaciones constructivas). */
   technicalSpecs?: string[];
 
