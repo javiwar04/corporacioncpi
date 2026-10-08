@@ -61,12 +61,23 @@ export const MAP_TYPE_META: Record<
 };
 
 // Coordenadas aproximadas por condominio / zona (Antigua y alrededores).
-const ZONE_COORDS: Record<string, { lat: number; lng: number }> = {
+// `label` y `city` solo se usan cuando un mismo condominio existe en más de un
+// municipio y hay que separarlo en dos pines (p. ej. La Serenísima).
+const ZONE_COORDS: Record<
+  string,
+  { lat: number; lng: number; label?: string; city?: string }
+> = {
   "Antigua Gardens": { lat: 14.5418, lng: -90.7642 },
   "Casco del Cerro": { lat: 14.5556, lng: -90.746 },
   "Los Franciscanos": { lat: 14.545, lng: -90.755 },
   "Paseo Antigua": { lat: 14.5605, lng: -90.7405 },
-  "La Serenísima": { lat: 14.5625, lng: -90.735 },
+  "La Serenísima": { lat: 14.5625, lng: -90.735, city: "Antigua Guatemala" },
+  "La Serenísima · Ciudad Vieja": {
+    lat: 14.5128,
+    lng: -90.7622,
+    label: "La Serenísima",
+    city: "Ciudad Vieja",
+  },
   "Refugio del Ángel": { lat: 14.548, lng: -90.749 },
   "Hacienda del Comendador": { lat: 14.543, lng: -90.76 },
   "Portales de Antigua": { lat: 14.562, lng: -90.733 },
@@ -80,7 +91,11 @@ function zoneOf(p: ExecutedProject): string {
   if (s.includes("casco del cerro")) return "Casco del Cerro";
   if (s.includes("franciscanos")) return "Los Franciscanos";
   if (s.includes("paseo antigua")) return "Paseo Antigua";
-  if (s.includes("serenísima") || s.includes("serenisima")) return "La Serenísima";
+  // El condominio La Serenísima existe en Antigua y en Ciudad Vieja: cada uno
+  // tiene su propia casa No. 17, así que van en pines distintos.
+  if (s.includes("serenísima") || s.includes("serenisima")) {
+    return s.includes("ciudad vieja") ? "La Serenísima · Ciudad Vieja" : "La Serenísima";
+  }
   if (s.includes("refugio del ángel") || s.includes("refugio del angel")) return "Refugio del Ángel";
   if (s.includes("comendador")) return "Hacienda del Comendador";
   if (s.includes("portales de antigua")) return "Portales de Antigua";
@@ -128,8 +143,13 @@ export function buildMasterPoints(): MasterPoint[] {
       lat: coords.lat,
       lng: coords.lng,
       approximate: true,
-      title: zone,
-      subtitle: `${list.length} ${list.length === 1 ? "proyecto ejecutado" : "proyectos ejecutados"}`,
+      title: coords.label ?? zone,
+      subtitle: [
+        coords.city,
+        `${list.length} ${list.length === 1 ? "proyecto ejecutado" : "proyectos ejecutados"}`,
+      ]
+        .filter(Boolean)
+        .join(" · "),
       href: "/proyectos",
       items: list.map((e) => ({ name: e.name, sub: e.location, thumb: e.image })),
     });

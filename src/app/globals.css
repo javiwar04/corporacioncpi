@@ -103,6 +103,11 @@
   background: #eae7df;
   font-family: var(--font-sans), system-ui, sans-serif;
 }
+/* El basemap por defecto (OpenStreetMap) es más saturado que el estilo claro
+   que usábamos antes: se baja el color para que no compita con los pines. */
+.leaflet-tile {
+  filter: saturate(0.55) brightness(1.04);
+}
 .leaflet-popup-content-wrapper {
   border-radius: 14px;
   padding: 0;

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { Project } from "@/data/types";
 import { projectCounters, categoryLabels, projectStatusLabels } from "@/data";
-import { site } from "@/data/site";
+import { mapTileLayer } from "@/lib/mapTiles";
 
 // Iconos de categoría como path SVG (para el marcador personalizado).
 const CATEGORY_GLYPH: Record<Project["category"], string> = {
@@ -15,30 +15,6 @@ const CATEGORY_GLYPH: Record<Project["category"], string> = {
   industrial: "M3 21V10l5 3V10l5 3V6l8 4v11z",
   hotel: "M4 21V5h9a4 4 0 0 1 4 4v3h3v9M8 9h4",
 };
-
-function tileConfig() {
-  const provider = site.map.provider;
-  if (site.map.tileUrl) {
-    return { url: site.map.tileUrl, attribution: "© Corporación CPI" };
-  }
-  if (provider === "mapbox" && site.map.tileKey) {
-    return {
-      url: `https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=${site.map.tileKey}`,
-      attribution: "© Mapbox © OpenStreetMap",
-    };
-  }
-  if (provider === "maptiler" && site.map.tileKey) {
-    return {
-      url: `https://api.maptiler.com/maps/dataviz-light/{z}/{x}/{y}.png?key=${site.map.tileKey}`,
-      attribution: "© MapTiler © OpenStreetMap",
-    };
-  }
-  // Default gratuito: CARTO Positron (limpio, sin API key)
-  return {
-    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-    attribution: "© OpenStreetMap © CARTO",
-  };
-}
 
 export default function ProjectsMap({
   projects,
@@ -73,7 +49,7 @@ export default function ProjectsMap({
       });
       mapRef.current = map;
 
-      const { url, attribution } = tileConfig();
+      const { url, attribution } = mapTileLayer();
       L.tileLayer(url, { attribution, maxZoom: 19 }).addTo(map);
 
       const cluster = (L as any).markerClusterGroup({

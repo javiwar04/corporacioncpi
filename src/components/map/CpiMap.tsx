@@ -4,13 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import { useEffect, useRef } from "react";
 import { MAP_TYPE_META, type MasterPoint, type MapPointType } from "@/data/mapPoints";
-
-function tile() {
-  return {
-    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-    attribution: "© OpenStreetMap © CARTO",
-  };
-}
+import { mapTileLayer } from "@/lib/mapTiles";
 
 function pinHtml(color: string, glyph: string, badge?: number) {
   const badgeHtml =
@@ -95,7 +89,7 @@ export default function CpiMap({
 
       const map = L.map(ref.current, { scrollWheelZoom: false, attributionControl: true });
       mapRef.current = map;
-      const { url, attribution } = tile();
+      const { url, attribution } = mapTileLayer();
       L.tileLayer(url, { attribution, maxZoom: 19 }).addTo(map);
       map.setView([15.9, -90.3], 7);
       map.on("click", () => map.scrollWheelZoom.enable());
